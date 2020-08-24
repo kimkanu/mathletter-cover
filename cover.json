@@ -1,0 +1,45 @@
+{
+    "issue": 264,
+    "month": 8,
+    "year": 2020,
+    "dateIssuedKor": "2020년 8월 11일",
+    "datePrintedKor": "2020년 8월 13일",
+    "articles": [
+        {
+            "title": "Spectral Clustering",
+            "page": 507
+        }
+    ],
+    "problems": [
+        {
+            "title": "2019 한국 주니어수학올림피아드 풀이 II",
+            "page": 527
+        },
+        {
+            "title": "2019 봄 도시대항 국제수학토너먼트\\endgraf A레벨 고등부 풀이",
+            "page": 533
+        },
+        {
+            "title": "2019 걸프 수학올림피아드",
+            "page": 540
+        }
+    ],
+    "officers": {
+        "president": "조민서",
+        "vicePresident": "전도윤",
+        "editor": "이동희, 이의진",
+        "academic": "노희윤",
+        "olympiad": "고봉균"
+    },
+    "club": {
+        "name": "수학문제연구회",
+        "homepage": "msquare.kaist.ac.kr",
+        "email": "kaist.msquare.1988@gmail.com",
+        "postCode": "34141",
+        "address": "대전광역시 유성구 대학로 291 한국과학기술원 태울관 2111호",
+        "bankAccount": "우리은행 1002-660-893409 (전도윤)",
+        "subscriptionPay": "10부: 28,000원 / 20부: 53,000원",
+        "profs": "고기형, 진교택, 엄상일",
+        "publisher": "광문당"
+    }
+}
