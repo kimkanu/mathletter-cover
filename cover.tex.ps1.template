@@ -71,22 +71,22 @@
 }}%
 %
 % Annually changing infos
-\def\President{}
-\def\VicePresident{}
-\def\EditorHead{}
-\def\AcademicHead{}
-\def\OlympiadHead{}
-\def\BankAccount{}
+\def\President{<President>}
+\def\VicePresident{<VicePresident>}
+\def\EditorHead{<EditorHead>}
+\def\AcademicHead{<AcademicHead>}
+\def\OlympiadHead{<OlympiadHead>}
+\def\BankAccount{<BankAccount>}
 %
-\def\Homepage{msquare.kaist.ac.kr}
-\def\Email{kaist.msquare.1988@gmail.com}
-\def\PostCode{34141}
-\def\AddressNon{대전광역시 유성구 대학로 291 한국과학기술원 태울관 2111호}
-\def\Address{\AddressNon\ 수학문제연구회}
-\def\SubscriptionPay{10부: 28,000원 / 20부: 53,000원}
-\def\Profs{고기형, 진교택, 엄상일}
+\def\Homepage{<Homepage>}
+\def\Email{<Email>}
+\def\PostCode{<PostCode>}
+\def\AddressNon{<Address>}
+\def\Address{\AddressNon\ <Name>}
+\def\SubscriptionPay{<SubscriptionPay>}
+\def\Profs{<Profs>}
 %
-\def\Publisher{광문당}
+\def\Publisher{<Publisher>}
 %
 %
 %
