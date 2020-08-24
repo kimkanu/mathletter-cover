@@ -1,27 +1,19 @@
 {
-    "issue": 264,
-    "month": 8,
-    "year": 2020,
-    "dateIssuedKor": "2020년 8월 11일",
-    "datePrintedKor": "2020년 8월 13일",
+    "issue": <Issue>,
+    "month": 1,
+    "year": 1970,
+    "dateIssuedKor": "",
+    "datePrintedKor": "",
     "articles": [
         {
-            "title": "Spectral Clustering",
-            "page": 507
+            "title": "sample",
+            "page": 1
         }
     ],
     "problems": [
         {
-            "title": "2019 한국 주니어수학올림피아드 풀이 II",
-            "page": 527
-        },
-        {
-            "title": "2019 봄 도시대항 국제수학토너먼트\\endgraf A레벨 고등부 풀이",
-            "page": 533
-        },
-        {
-            "title": "2019 걸프 수학올림피아드",
-            "page": 540
+            "title": "sample",
+            "page": 2
         }
     ],
     "officers": {
