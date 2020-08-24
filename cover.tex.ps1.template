@@ -1,0 +1,540 @@
+%!TEX program = lualatex
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MathLetter cover file made with TeX %
+%         Made by Keonwoo Kim         %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Compile with XeLaTeX (due to the font problem)
+% Compile TWICE to get the intended result!
+% Coordinate system follows the standard one in programming;
+%   →: x increases, ↓: y increases
+% Keep the max line length at most 80 (if possible)
+% The name of a constant must be in CamelCase
+% Avoid any hardcoded dimensions %%%%%%%%%%%%%%%% TODO
+%
+%
+%%%%%%%%%%%%%%%%%%%
+% PACKAGE IMPORTS %
+%%%%%%%%%%%%%%%%%%%
+%
+\documentclass[12pt]{article}
+\usepackage{kotex}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{setspace}
+% TikZ imports every nice packages
+\usepackage{tikz}
+\usetikzlibrary{calc}
+% except a few packages
+\usepackage{varwidth}
+\usepackage{datetime}
+\usepackage{pagecolor}
+\usepackage{afterpage}
+%
+%
+%%%%%%%%%%%%%%%%%%%%
+% KEY INFORMATIONS %
+%%%%%%%%%%%%%%%%%%%%
+%
+% IF YOU ARE IN TESTING, PLEASE TRIGGER THIS
+\newif\iftest
+%\testtrue % if you are in testing
+\testfalse % if you are in the production mode
+%
+% SET THE ISSUE INFOS
+\def\IssueNumber{<IssueNumber>}
+\def\Month{<Month>}
+\def\Year{<Year>}
+\def\DateIssuedKor{<DateIssuedKor>}
+\def\DatePrintedKor{<DatePrintedKor>}
+%
+% SET THE NUMBER OF ARTICLES (>= 1) AND THE TITLES OF ARTICLES HERE
+% Enclose the array with {} once more, and separate each item by []
+% Note: if a manual line-break is needed, add `\endgraf', not `\par' or `\\'.
+% (definitions of arrays are not LONG)
+\def\NumberOfArticles{<NumberOfArticles>}
+\edef\Articles{{%
+<Articles>
+}}%
+\edef\ArticlePages{{%
+<ArticlePages>
+}}%
+%
+% SIMILARLY, SET THEM FOR PROBLEMS
+\def\NumberOfProblems{1}%
+\edef\Problems{{%
+<Problems>
+}}%
+\edef\ProblemPages{{%
+<ProblemPages>
+}}%
+%
+% Annually changing infos
+\def\President{}
+\def\VicePresident{}
+\def\EditorHead{}
+\def\AcademicHead{}
+\def\OlympiadHead{}
+\def\BankAccount{}
+%
+\def\Homepage{msquare.kaist.ac.kr}
+\def\Email{kaist.msquare.1988@gmail.com}
+\def\PostCode{34141}
+\def\AddressNon{대전광역시 유성구 대학로 291 한국과학기술원 태울관 2111호}
+\def\Address{\AddressNon\ 수학문제연구회}
+\def\SubscriptionPay{10부: 28,000원 / 20부: 53,000원}
+\def\Profs{고기형, 진교택, 엄상일}
+%
+\def\Publisher{광문당}
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%
+% FONT SETTING %
+%%%%%%%%%%%%%%%%
+%
+\setmainfont{Latin Modern Roman}[Scale=1.05,OpticalSize=12]
+\setmainhangulfont{KoPubBatang Light}
+\setsansfont[Ligatures=TeX]{Noto Sans CJK KR}
+\newfontfamily\KoPubBatangLightEng{KoPubBatang Light}
+\newfontfamily\KoPubBatangEng{KoPubBatang Medium}
+\newfontfamily\KoPubBatangBoldEng{KoPubBatang Bold}
+\newhangulfontfamily\KoPubBatangLight[InterHangul=-.05em]{KoPubBatangLight}
+\newhangulfontfamily\KoPubBatang[InterHangul=-.05em]{KoPubBatangMedium}
+\newhangulfontfamily\KoPubBatangBold[InterHangul=-.05em]{KoPubBatangBold}
+\newfontfamily\KoPubDotumLight{KoPubDotumLight}
+\newfontfamily\KoPubDotum{KoPubDotumMedium}
+\newfontfamily\KoPubDotumBold{KoPubDotumBold}
+%
+\newsavebox\CBox
+\def\textbd#1{\sbox\CBox{#1}\resizebox{\wd\CBox}{\ht\CBox}{\textbf{#1}}}
+%
+%
+%%%%%%%%%%%%%%%%%
+% DEFINE COLORS %
+%%%%%%%%%%%%%%%%%
+% Nice gray (K 80%)
+\definecolor{NiceGray}{cmyk}{0, 0, 0, .8}
+\definecolor{NiceLightGray}{cmyk}{0, 0, 0, .3}
+%
+\def\PageColor{white}
+\def\TextColor{black}
+\def\HighlightColor{black}
+\def\HighlightLineColor{NiceGray}
+\def\MathFile{math.pdf}
+\def\LogoFile{logo.pdf}
+\def\OldStyle{%
+  \def\PageColor{black}%
+  \def\TextColor{white}%
+  \def\HighlightColor{red}%
+  \def\HighlightLineColor{red}%
+  \def\MathFile{../Math-inverted}%
+  \def\LogoFile{../logo-inverted}%
+}
+% \OldStyle
+%
+%
+%%%%%%%%%%%%%%
+% SET COLORS %
+%%%%%%%%%%%%%%
+%
+\newpagecolor{\PageColor}\afterpage{\restorepagecolor}
+%
+%
+%%%%%%%%%%%%%%%%%%%%%
+% DEFINE DIMENSIONS %
+%%%%%%%%%%%%%%%%%%%%%
+%
+% the dimension of the document
+\usepackage[margin=0em,paperwidth=12.81in,paperheight=9.58in,nohead,nofoot]{geometry}
+% parindent
+\parindent=0in
+%
+% define the size of the bleed (which means the part that goes beyond the edge
+% of where the sheet will be trimmed)
+\newdimen\BleedLen
+\BleedLen=.46in
+\newdimen\BleedMarkLen
+\BleedMarkLen=.34in
+%
+% the y-coordinate of the horizontal line below the text node 'Contents'
+\newdimen\ContentsHorRuleY
+\ContentsHorRuleY=-1.75in
+% the length of horizontal rule below the text node 'Contents'
+\newdimen\ContentsHorRuleLen
+\ContentsHorRuleLen=1.8958in
+% the thickness of horizontal rule below the text node 'Contents'
+\newdimen\ContentsHorRuleThick
+\ContentsHorRuleThick=2.8pt
+% the offset for the text node 'Contents'
+\def\ContentsTextOffset{.0542, -.05}
+% the kern dimension for the text node 'Contents'
+\newdimen\ContentsTextKern
+\ContentsTextKern=2pt
+% the dimen of indentation for the vertical line from the above horizontal line
+\newdimen\ArticlesVerRuleX
+\ArticlesVerRuleX=.33in
+% the length of vertical rule from the above horizontal line to the point
+% whose y-coordinate is the same with one of the text node 'Articles'
+\newdimen\ArticlesVerRuleLen
+\ArticlesVerRuleLen=-.83in
+% the length of horizontal tick toward the text node 'Articles'
+\newdimen\ArticlesHorTickLen
+\ArticlesHorTickLen=.17in
+% the thickness of horizontal rule below the text node 'Contents'
+\newdimen\ThinRulesThick
+\ThinRulesThick=1pt
+% the kern dimension for the text nodes 'Articles' and 'Problems'
+\newdimen\ArticlesProblemsTextKern
+\ArticlesProblemsTextKern=.35pt
+%
+% 'Contents' font
+\def\SetContentsFont{\fontsize{16.3}{19}\selectfont\bfseries\sffamily{}}
+%
+% Kerning characters
+\makeatletter
+\def\autokern#1#2{%
+  \@tfor\next:=#2\do{\aut@kern{#1}{\next}}%
+}
+\def\aut@kern#1#2{%
+\kern#1#2%
+}
+%
+% unnecessary title
+\title{MathLetter Cover Page}
+\author{Keonwoo Kim}
+\date{Sept. 18, 2018}
+%
+\makeatletter
+\newcommand{\gettikzxy}[3]{%
+  \tikz@scan@one@point\pgfutil@firstofone#1\relax
+  \edef#2{\the\pgf@x}%
+  \edef#3{\the\pgf@y}%
+}
+%
+\begin{document}
+%
+%
+%%%%%%%%%%%%%%
+% FIRST PAGE %
+%%%%%%%%%%%%%%
+%
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture,overlay,anchor=center,x=1in,y=-1in]
+
+% set the reference point
+\begin{scope}[shift={(current page.south west)}]
+
+% draw bleed lines
+{
+  % north west
+  \draw (\BleedLen, \paperheight)
+    -- (\BleedLen, \dimexpr\paperheight - \BleedMarkLen\relax);
+  \draw (0, \dimexpr\paperheight - \BleedLen\relax)
+    -- (\BleedMarkLen, \dimexpr\paperheight - \BleedLen\relax);
+
+  % south west
+  \draw (\BleedLen, 0) -- (\BleedLen, \BleedMarkLen);
+  \draw (0, \BleedLen) -- (\BleedMarkLen, \BleedLen);
+
+  % north east
+  \draw (\dimexpr\paperwidth - \BleedLen\relax, \paperheight)
+    -- (\dimexpr\paperwidth - \BleedLen\relax,
+        \dimexpr\paperheight - \BleedMarkLen\relax);
+  \draw (\paperwidth, \dimexpr\paperheight - \BleedLen\relax)
+    -- (\dimexpr\paperwidth - \BleedMarkLen\relax,
+        \dimexpr\paperheight - \BleedLen\relax);
+
+  % south east
+  \draw (\dimexpr\paperwidth - \BleedLen\relax, 0)
+    -- (\dimexpr\paperwidth - \BleedLen\relax, \BleedMarkLen);
+  \draw (\paperwidth, \BleedLen)
+    -- (\dimexpr\paperwidth - \BleedMarkLen\relax, \BleedLen);
+
+  \iftest
+    % vertical center line
+    \draw[draw=NiceLightGray] (\dimexpr\paperwidth / 2\relax, 0)
+      -- (\dimexpr\paperwidth / 2\relax, \paperheight);
+
+    % visible page line
+    \draw[draw=NiceLightGray] (\BleedLen, \BleedLen) rectangle
+      (\dimexpr\paperwidth - \BleedLen\relax, \dimexpr\paperheight - \BleedLen\relax);
+  \fi
+}
+
+% reset the reference point
+\begin{scope}[shift={($(current page.north west) + ({\BleedLen}, {-\BleedLen})$)}]
+
+% main horizontal / vertical / diagonal lines
+\draw[line width=1pt,draw=NiceGray] (7.04, -1) -- (7.04, -\paperheight);
+\draw[line width=1pt,draw=NiceGray] (-1, 1.57) -- (\paperwidth, 1.57);
+\draw[line width=.5pt,draw=NiceGray] (-1, 2.817) -- (5.28857458, 2.817);
+\draw[line width=1pt,draw=NiceGray] (7.04, 1.57) -- (\paperwidth, \dimexpr-\paperwidth + 5.47in\relax);
+
+% small square on the intersection
+\node[fill=NiceGray,anchor=center,draw=NiceGray,minimum width=.16in,minimum height=.16in] at (7.04, 1.57) {};
+
+% main circle
+\draw[line width=1pt,anchor=center,draw=NiceGray,minimum width=.16in,minimum height=.16in] (7.04, 1.57) circle (2.15in);
+
+\node[anchor=north west,text width=7.27in,inner sep=0in,xscale=.55,yscale=.55] at (.626, 1.71) {\parbox{7.27in}{\color{\TextColor}{\KoPubBatangBold한국과학기술원 수학문제연구회}\KoPubBatangLight는 수학을 사랑하고, 수학적 사고로 자신을 연마하려는 사람들의 모임으로, 1988년 3월 창립된 비영리 목적의 동아리입니다. 또한 본회는 창립 이후 \Profs\ 교수님의 지도 하에 회지 MATH LETTER 발간 및 각종 세미나 개최, 수학올림피아드 계절학교 조교 및 통신강좌 관리 등을 통해 회원간의 친목도모에도 힘써 왔습니다.\\[1em]수학을 사랑하시는 분들과 함께 연락, 공감하는 장이 되고자 발간하는 것입니다. 이 MATH LETTER는 고등학생부터 대학생 수준에 이른 넓은 범위의 여러 흥미있는 수학적 토픽들을 다루고 있으며, 특히 국내 수학올림피아드 교육과 밀접한 관계를 가지고 이에 관한 내용을 많이 소개하고 있고, 독자 여러분들의 다양한 proposal들을 받아 폭넓은 수준의 문제들을 소개하고 있습니다.}};
+
+\draw[line width=1pt,draw=\HighlightLineColor] (2.097, 6.024) rectangle (-1, 6.328);
+\node[anchor=west,text width=7.27in,inner sep=0in,xscale=.7,yscale=.7] at (.626, 6.176) {\color{\TextColor}\KoPubBatangBold\raisebox{-.05em}{\textbd{MATH LETTER}} 구독안내};
+\setstretch{1.1}
+\draw[line width=.5pt,draw=NiceGray] (2.097, 6.176) -- (\dimexpr\paperwidth/2 - .46in\relax, 6.176);
+\node[anchor=north west,text width=5in,inner sep=0in,xscale=.7,yscale=.7] at (.626, 6.558) {\color{\TextColor}\parbox{4.6in}{\KoPubBatangLight\raisebox{-.05em}{MATH LETTER} 구독을 희망하시는 분은 \Homepage의 MathLetter{\KoPubBatangLightEng/}구독신청 탭에서 신청하신 후, 아래 계좌로 구독료를 입금해 주시면 확인 후 발송해 드립니다.\\[4mm]%
+{\KoPubBatangLightEng\BankAccount}\\
+구독료 \KoPubBatangLightEng\SubscriptionPay}};
+\draw[line width=.5pt,draw=NiceGray] (-1, 7.687) -- (\dimexpr\paperwidth/2 - .46in\relax, 7.687);
+\node[anchor=west,text width=7.27in,inner sep=0in,xscale=.64,yscale=.64] at (.626, 8.166) {\color{\TextColor}\sffamily\KoPubDotum https://\Homepage\\
+\AddressNon\\
+E-mail: \Email};
+
+
+% issue #
+\node[fill=NiceGray,anchor=north east,draw=NiceGray,minimum width=.766in,minimum height=.204in] at (7.04, .216) {\textcolor{white}{\sffamily\fontsize{9}{9}\selectfont통권 \raisebox{-.08ex}{\IssueNumber}호}};
+\node[anchor=south west] at (9.19, 1.57) {\color{\HighlightColor}\bfseries\sffamily\fontsize{18}{18}\selectfont Math Letter};
+\node[anchor=south west] at (9.19, 1.054) {\color{\HighlightColor}\KoPubBatangEng\fontsize{7}{7}\selectfont \monthname[\Month] \Year};
+\node[anchor=south west] at (9.19, 1.18) {\color{\HighlightColor}\KoPubBatangEng\fontsize{7}{7}\selectfont Issue \IssueNumber};
+
+% Math logo
+\iftest
+\draw[line width=.2pt,draw=NiceGray] (-1, 2.436) -- (\paperwidth, 2.436);
+\draw[line width=.2pt,draw=NiceGray] (-1, 4.5) -- (\paperwidth, 4.5);
+\draw[line width=.2pt,draw=NiceGray] (-1, 4.21) -- (\paperwidth, 4.21);
+\draw[line width=.2pt,draw=NiceGray] (-1, 4.575) -- (\paperwidth, 4.575);
+\fi
+
+\node[anchor=north west,inner sep=0in] at (5.389, 2.436) {\includegraphics{\MathFile}};
+
+\node[anchor=south,inner sep=0in] at (8.9175, 8.287) {\includegraphics{\LogoFile}};
+
+\end{scope}
+
+\end{scope}
+\end{tikzpicture}
+%
+%%%%%%%%%%%%%%%
+% SECOND PAGE %
+%%%%%%%%%%%%%%%
+%
+% Macros for articles
+\def\nthArticle#1{%
+  \expandafter\nth@rticl@\expandafter{\expandafter#1\expandafter}\Articles%
+}
+\def\nthArticlePage#1{%
+  \expandafter\nth@rticl@\expandafter{\expandafter#1\expandafter}\ArticlePages%
+}
+\def\nthProblem#1{%
+  \expandafter\nth@rticl@\expandafter{\expandafter#1\expandafter}\Problems%
+}
+\def\nthProblemPage#1{%
+  \expandafter\nth@rticl@\expandafter{\expandafter#1\expandafter}\ProblemPages%
+}
+\def\nth@rticl@#1#2{%
+  \begingroup
+  \expandafter\endgroup
+  \expandafter\nth@rticle#1#2\relax
+}
+\def\nth@rticle#1[#2]#3\relax{%
+  \if1#1\relax#2\fi%
+  \ifnum#1>0%
+    \begingroup%
+    \ifx\relax#3\relax % if #3 is empty
+      \def\next{\endgroup}%
+    \else%
+      \def\next{\endgroup\nth@rticle\the\numexpr#1-1\relax#3\relax}%
+    \fi%
+    \next%
+  \fi%
+}
+\makeatother
+
+\clearpage
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture,overlay,anchor=south west,x=1in,y=-1in]
+
+% set the reference point
+\begin{scope}[shift={(current page.south west)}]
+
+% draw bleed lines
+{
+  % north west
+  \draw (\BleedLen, \paperheight)
+    -- (\BleedLen, \dimexpr\paperheight - \BleedMarkLen\relax);
+  \draw (0, \dimexpr\paperheight - \BleedLen\relax)
+    -- (\BleedMarkLen, \dimexpr\paperheight - \BleedLen\relax);
+
+  % south west
+  \draw (\BleedLen, 0) -- (\BleedLen, \BleedMarkLen);
+  \draw (0, \BleedLen) -- (\BleedMarkLen, \BleedLen);
+
+  % north east
+  \draw (\dimexpr\paperwidth - \BleedLen\relax, \paperheight)
+    -- (\dimexpr\paperwidth - \BleedLen\relax,
+        \dimexpr\paperheight - \BleedMarkLen\relax);
+  \draw (\paperwidth, \dimexpr\paperheight - \BleedLen\relax)
+    -- (\dimexpr\paperwidth - \BleedMarkLen\relax,
+        \dimexpr\paperheight - \BleedLen\relax);
+
+  % south east
+  \draw (\dimexpr\paperwidth - \BleedLen\relax, 0)
+    -- (\dimexpr\paperwidth - \BleedLen\relax, \BleedMarkLen);
+  \draw (\paperwidth, \BleedLen)
+    -- (\dimexpr\paperwidth - \BleedMarkLen\relax, \BleedLen);
+
+  \iftest
+    % vertical center line
+    \draw[draw=NiceLightGray] (\dimexpr\paperwidth / 2\relax, 0)
+      -- (\dimexpr\paperwidth / 2\relax, \paperheight);
+
+    % visible page line
+    \draw[draw=NiceLightGray] (\BleedLen, \BleedLen) rectangle
+      (\dimexpr\paperwidth - \BleedLen\relax, \dimexpr\paperheight - \BleedLen\relax);
+  \fi
+}
+
+% reset the reference point
+\begin{scope}[shift={($(current page.north west) + ({\BleedLen}, {-\BleedLen})$)}]
+
+% 2em = 384px in 200%
+
+%%% LEFT SIDE
+
+% 'Contents'
+\draw[line width=\ContentsHorRuleThick] (-\BleedLen, \ContentsHorRuleY)
+  -- (\dimexpr\ContentsHorRuleLen - \BleedLen\relax, \ContentsHorRuleY);
+\node[anchor=south east] at
+  ($(\dimexpr\ContentsHorRuleLen - \BleedLen\relax, \ContentsHorRuleY)
+    + (\ContentsTextOffset)$)
+  {\SetContentsFont\autokern{\ContentsTextKern}{Contents}};
+
+% vertical and horizontal lines to 'Articles'
+\draw[line width=\ThinRulesThick]
+  (\ArticlesVerRuleX, \ContentsHorRuleY)
+  -- ++(0, \ArticlesVerRuleLen)
+  -- ++(\ArticlesHorTickLen, 0);
+% 'Articles'
+\coordinate (ArticleText) at (\dimexpr\ArticlesVerRuleX + \ArticlesHorTickLen\relax,
+  \dimexpr\ContentsHorRuleY + \ArticlesVerRuleLen\relax);
+\node[anchor=west] at (ArticleText)
+  {\large\bfseries\sffamily{\autokern{\ArticlesProblemsTextKern}{Articles}}};
+% Prints the list of articles
+\coordinate (Article0) at ($(ArticleText.south west) + (.9, .05)$);
+\coordinate (ArticleProblemPage0) at (4.6, 0);
+\foreach \i in {1, ..., \NumberOfArticles} {
+  \pgfmathtruncatemacro{\j}{\i - 1}
+  \path[anchor=north west] node (Article\i) at ($(Article\j.south west) + (0, .08)$)
+    {\begin{varwidth}{2.2in}\sffamily\footnotesize\nthArticle{\i}\end{varwidth}};
+  \path[anchor=west] node (ArticlePage\i) at (Article\i -| ArticleProblemPage0)
+    {\sffamily\footnotesize\nthArticlePage{\i}};
+  \draw[dotted,line width=1pt] ($(Article\i.east) + (.2, 0)$)
+    -- ($(ArticlePage\i.west) + (-.2, 0)$);
+}
+
+% vertical and horizontal lines to 'Problems'
+\coordinate (LastArticle) at ($(Article\NumberOfArticles.south west) + (0, .55)$);
+\coordinate (LastCorner) at (\ArticlesVerRuleX, 0);
+\draw[line width=\ThinRulesThick]
+  (\ArticlesVerRuleX, \dimexpr\ContentsHorRuleY + \ArticlesVerRuleLen\relax)
+  -- (LastCorner |- LastArticle)
+  -- ++(\ArticlesHorTickLen, 0);
+% 'Problems'
+\coordinate (ProblemText) at
+  ($(LastCorner |- LastArticle) + (\ArticlesHorTickLen, 0)$);
+\node[anchor=west] at (ProblemText)
+  {\large\bfseries\sffamily{\autokern{\ArticlesProblemsTextKern}{Problems}}};
+  % Prints the list of problems
+\coordinate (Problem0) at ($(ProblemText.south west) + (.9, .05)$);
+\foreach \i in {1, ..., \NumberOfProblems} {
+  \pgfmathtruncatemacro{\j}{\i - 1}
+  \path[anchor=north west] node (Problem\i) at ($(Problem\j.south west) + (0, .08)$)
+    {\begin{varwidth}{2.2in}\sffamily\footnotesize\nthProblem{\i}\end{varwidth}};
+  \path[anchor=west] node (ProblemPage\i) at (Problem\i -| ArticleProblemPage0)
+    {\sffamily\footnotesize\nthProblemPage{\i}};
+  \draw[dotted,line width=1pt] ($(Problem\i.east) + (.2, 0)$)
+    -- ($(ProblemPage\i.west) + (-.2, 0)$);
+}
+
+\node[anchor=south west,text width=\dimexpr\paperwidth / 2\relax,draw=black!27!,inner sep=.55em,line width=1.5pt] (Notice)
+  at (\dimexpr\paperwidth / 2 - \BleedLen + 1.1in\relax, 1.75)
+  {\KoPubBatangBold 알려드립니다};
+\node[anchor=north west,text width=\dimexpr\paperwidth\relax,scale=0.62]
+  at ($(Notice.south west) + (.05, .2)$) {%
+    \setstretch{1.2}%
+    {{\KoPubBatangLightEng1.}\ MATH LETTER는 독자 여러분과 같이 호흡하는 공간입니다.}\\
+    \hbox{\hphantom{\KoPubBatangLightEng1.\ }{MATH LETTER에 싣고 싶은 글이 있으시면, 수학문제연구회로 연락주시기 바랍니다.}}
+    \vskip3mm%
+    {{\KoPubBatangLightEng2.}\ MATH LETTER에 원고나 풀이가 실린 분들에게는 구독권 또는 소정의 상품을 드립니다.}\\
+    \vskip3mm%
+    {{\KoPubBatangLightEng3.}\ MATH LETTER는 \KoPubBatangLightEng1년에 6회 발행됩니다.}
+  };
+
+\node[anchor=south west,text width=\dimexpr\paperwidth / 2\relax,draw=black!27!,inner sep=.55em,line width=1.5pt] (Submit)
+  at (\dimexpr\paperwidth / 2 - \BleedLen + 1.1in\relax, 3.55)
+  {\KoPubBatangBold\raisebox{-.03em}{\textbd{MATH LETTER}} 투고 안내};
+\node[anchor=north west,text width=\dimexpr\paperwidth\relax,scale=0.62]
+  at ($(Submit.south west) + (.05, .2)$) {%
+    \setstretch{1.2}%
+    MATH LETTER의 내용에 대한 질문이나 기타 제안 또는 proposal과 solution은 아래로 보내주시면\\
+    검토하여 실어드리겠습니다.\\[12mm]
+    \hbox{%
+      \hbox to .7in{\sffamily\KoPubDotum 회장\,}\hbox to 2.9in{\sffamily\KoPubDotum: \President\hfil}%
+      \hbox to .7in{\sffamily\KoPubDotum 부회장\,}\hbox to 2.9in{\sffamily\KoPubDotum: \VicePresident\hfil}%
+    }
+    \hbox{%
+      \hbox to .7in{\sffamily\KoPubDotum 편집부장\,}\hbox to 2.9in{\sffamily\KoPubDotum: \EditorHead\hfil}%
+      \hbox to .7in{\sffamily\KoPubDotum 학술부장\,}\hbox to 2.9in{\sffamily\KoPubDotum: \AcademicHead\hfil}%
+    }
+    \hbox{%
+      \hbox to 5.4in{\sffamily\KoPubDotum 올림피아드코너 담당자\,: \OlympiadHead\hfil}%
+    }
+    \vskip12mm\sffamily%
+    \textbf{\KoPubDotumBold 수학문제연구회}\\
+    \KoPubDotum https://\Homepage\\
+    E-mail: \Email\\
+    우편번호: \PostCode\\
+    \Address\\
+  };
+
+\node[anchor=south west,text width=\dimexpr\paperwidth / 2\relax,draw=black!27!,inner sep=.55em,line width=1.5pt] (Right)
+  at (\dimexpr\paperwidth / 2 - \BleedLen + 1.1in\relax, 6.65)
+  {\textbd{MATH LETTER}};
+\node[anchor=north west,text width=\dimexpr\paperwidth\relax,scale=0.62]
+  at ($(Right.south west) + (.05, .2)$) {%
+    \setstretch{1.2}\sffamily\KoPubDotum%
+    \Year년 \Month월호 (통권 \IssueNumber호)\\[4mm]
+    \hbox{%
+      \hbox to .7in{발행일\,}\hbox to 2.9in{: \DateIssuedKor\hfil}%
+      \hbox to .7in{지은이\,}\hbox to 2.9in{: KAIST 수학문제연구회\hfil}%
+    }
+    \hbox{%
+      \hbox to .7in{인쇄일\,}\hbox to 2.9in{: \DatePrintedKor\hfil}%
+    }
+    \hbox{%
+      \hbox to .7in{인쇄\,}\hbox to 2.9in{: \Publisher\hfil}%
+    }
+    \hbox{%
+      \hbox to .7in{출판\ 등록\,}\hbox to 2.9in{: 1999년 1월 15일 제160호\hfil}%
+      \hbox to .7in{I\hfil S\hfil S\hfil N\,}\hbox to 2.9in{: 1228-5072\hfil}%
+    }
+  };
+\end{scope}
+\end{scope}
+\end{tikzpicture}
+\end{document}
